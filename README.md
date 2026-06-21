@@ -24,20 +24,43 @@
 
 ## O problema que resolve
 
-Cada estado brasileiro tem seu próprio sistema de Polícia Civil, Tribunal de Justiça e Tribunal Regional Eleitoral — com domínios, nomes e fluxos completamente diferentes entre si. Quem precisa de uma certidão de antecedentes (para emprego, concurso, processo seletivo, etc.) frequentemente cai em buscas genéricas no Google e acaba em sites de terceiros que cobram por algo que é **gratuito**, ou pior, em páginas fraudulentas.
+Cada estado brasileiro tem seu próprio órgão responsável pela emissão de antecedentes criminais — e esse órgão **nem sempre se chama "Polícia Civil"**. Em vários estados, quem emite é a Polícia Científica, um Instituto de Identificação, ou um instituto técnico-científico com nome próprio. Cada um tem seu domínio, nome e fluxo diferente. Quem precisa de uma certidão para emprego, concurso ou processo seletivo frequentemente cai em buscas genéricas no Google e acaba em sites de terceiros que cobram por algo **gratuito**, ou pior, em páginas fraudulentas.
 
-Esta ferramenta resolve isso reunindo, em um só lugar, **apenas links verificados manualmente** para domínios `.gov.br` e `.jus.br` oficiais — sem cobrar nada e sem coletar nenhum dado pessoal do visitante.
+Esta ferramenta resolve isso reunindo, em um só lugar, **apenas links verificados manualmente** para domínios `.gov.br` e `.jus.br` oficiais — sem cobrar nada e sem coletar nenhum dado pessoal do visitante. E faz questão de nomear corretamente cada órgão, em vez de generalizar tudo como "Polícia Civil".
 
 ## O que está incluído
 
 - **26 estados + Distrito Federal** (as 27 unidades federativas), cada um com:
-  - Polícia Civil (antecedentes criminais estaduais)
-  - Tribunal de Justiça (certidões cíveis e criminais)
-  - Tribunal Regional Eleitoral (quitação eleitoral)
-- **6 Tribunais Regionais Federais** (Justiça Federal, mapeados por jurisdição)
+  - Órgão estadual responsável pela emissão de antecedentes criminais — identificado pelo nome correto em cada caso (ver tabela abaixo)
+  - Tribunal de Justiça (certidões cíveis e criminais estaduais)
+  - Tribunal Regional Eleitoral (site institucional, notícias e cartórios eleitorais locais)
+  - **Certidão de Quitação Eleitoral** — link direto para o Autoatendimento Eleitoral do TSE, sistema nacional único, igual para qualquer estado
+  - Tribunal Regional Federal da região correspondente (site institucional)
+  - **Certidão da Justiça Federal** — link direto para o Sistema de Certidão Unificada do CJF, que cobre as 5 regiões da Justiça Federal (TRF1 a TRF5) em uma única consulta
 - **5 órgãos federais**: Polícia Federal, TSE, TST (CNDT), Receita Federal/PGFN, STJ
 
-Todos os links foram conferidos manualmente em fontes oficiais — nenhum foi gerado por padrão de URL sem verificação.
+### Transparência sobre os órgãos estaduais
+
+Nem todo estado usa "Polícia Civil" como nome do órgão emissor. Os casos abaixo foram confirmados manualmente em fontes oficiais e nomeados de forma precisa na ferramenta:
+
+| Estado | Órgão real (conforme fonte oficial) |
+|---|---|
+| Alagoas (AL) | Polícia Científica — Instituto de Identificação |
+| Amazonas (AM) | Instituto de Identificação Aderson C. de Melo (IIACM) |
+| Espírito Santo (ES) | Polícia Científica |
+| Mato Grosso (MT) | Politec — Perícia Oficial e Identificação Técnica |
+| Mato Grosso do Sul (MS) | Instituto de Identificação "Gonçalo Pereira" |
+| Rio de Janeiro (RJ) | Instituto Félix Pacheco (Polícia Técnico-Científica/SEPOL) |
+| Rio Grande do Norte (RN) | ITEP — Instituto Técnico-Científico de Polícia |
+
+Nos demais estados, o órgão confirmado é mesmo a Polícia Civil estadual.
+
+### Por que existem dois sistemas nacionais unificados
+
+Dois serviços têm abrangência nacional e não variam por estado — por isso a ferramenta os trata separadamente do site institucional do TRE/TRF de cada UF:
+
+- **Certidão de Quitação Eleitoral**: emitida sempre pelo Autoatendimento Eleitoral do TSE, independente de qual TRE é o do seu estado.
+- **Certidão da Justiça Federal**: desde junho de 2024, o CJF unificou a emissão das 5 regiões (TRF1 a TRF5) em um único sistema, com um número de validação nacional.
 
 ## Stack
 
@@ -50,7 +73,7 @@ Por quê: facilita hospedagem em qualquer ambiente simples (neste caso, hospedag
 Não há dependências de build. Basta abrir o arquivo diretamente:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/achei-meus-antecedentes.git
+git clone https://github.com/pablonoliveira/achei-meus-antecedentes.git
 cd achei-meus-antecedentes
 # abra index.html no navegador, ou sirva com qualquer servidor estático:
 python3 -m http.server 8000
@@ -59,7 +82,7 @@ python3 -m http.server 8000
 ## Roadmap
 
 - [x] **v1.0** — Página única (SPA), mapa interativo, 26 estados + Distrito Federal + 6 TRFs + 5 órgãos federais, todos os links verificados manualmente
-- [ ] **v1.1** — Compressão/otimização de imagens, ajustes finos de acessibilidade (contraste, navegação por teclado)
+- [x] **v1.1** — Correção de precisão: nomeação correta do órgão emissor por estado (Polícia Civil, Polícia Científica ou Instituto de Identificação, conforme o caso); separação dos links de Certidão de Quitação Eleitoral (TSE) e Certidão da Justiça Federal (CJF) dos sites meramente institucionais de TRE/TRF
 - [ ] **v1.2** — Página dedicada de "última verificação" por estado, com data de checagem de cada link
 - [ ] **v2.0** — Uma URL própria por estado (ex: `/antecedentes/sp`), permitindo indexação individual em buscadores e SEO direcionado por estado
 

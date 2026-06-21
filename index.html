@@ -420,7 +420,7 @@ fbq('track', 'PageView');
   <div class="eyebrow">Serviço público gratuito de orientação</div>
   <h1>Encontre, em um clique, o site <em>oficial</em><br>do seu estado.</h1>
   <p>
-    Cada estado tem seu próprio sistema de Polícia Civil, Tribunal de Justiça e Tribunal Eleitoral —
+    Cada estado tem seu próprio órgão de identificação, Tribunal de Justiça e Tribunal Eleitoral —
     e ninguém merece se perder em buscas genéricas para conseguir uma certidão. Clique no seu estado
     no mapa e veja todos os links diretos, verificados, em um só lugar.
   </p>
@@ -433,8 +433,9 @@ fbq('track', 'PageView');
     <div class="trust-banner-text">
       <strong>Achei Meus Antecedentes Criminais e Civis</strong> reúne apenas links para sites oficiais de governo (.gov.br / .jus.br).
       Nenhum dado pessoal é coletado por esta página — você é redirecionado diretamente ao site do órgão competente.
-      Todas as 27 Polícias Civis estaduais, Tribunais de Justiça e Tribunais Regionais Eleitorais, além de 6 Tribunais Regionais Federais
-      e 5 órgãos federais, foram conferidos manualmente em fontes oficiais.
+      Os 26 estados e o Distrito Federal foram conferidos manualmente, incluindo o órgão estadual responsável pela emissão (Polícia Civil,
+      Polícia Científica ou Instituto de Identificação, conforme o caso), Tribunais de Justiça e Tribunais Regionais Eleitorais, além de
+      6 Tribunais Regionais Federais e 5 órgãos federais.
     </div>
   </div>
 </div>
@@ -709,7 +710,7 @@ fbq('track', 'PageView');
     <div class="panel-empty" id="panel-empty">
       <div class="glyph">§</div>
       <p>Selecione um estado no mapa, na busca ou na lista rápida para ver os links oficiais de
-      Polícia Civil, Tribunal de Justiça e Tribunal Eleitoral.</p>
+      identificação criminal, Tribunal de Justiça e Tribunal Eleitoral.</p>
     </div>
     <div id="panel-content" style="display:none;"></div>
   </div>
@@ -738,7 +739,7 @@ fbq('track', 'PageView');
 <footer>
   <strong>Achei Meus Antecedentes Criminais e Civis</strong> reúne apenas links para sites <strong>oficiais</strong> de governo (.gov.br / .jus.br).<br>
   Nenhum dado pessoal é coletado por esta página — você é redirecionado diretamente ao site do órgão competente.<br>
-  Todas as 27 Polícias Civis estaduais, Tribunais de Justiça e Tribunais Regionais Eleitorais, além de 6 Tribunais Regionais Federais e 5 órgãos federais, foram conferidos manualmente em fontes oficiais.
+  Os 26 estados e o Distrito Federal foram conferidos manualmente, incluindo o órgão estadual responsável pela emissão (Polícia Civil, Polícia Científica ou Instituto de Identificação, conforme o caso), Tribunais de Justiça e Tribunais Regionais Eleitorais, além de 6 Tribunais Regionais Federais e 5 órgãos federais.
 </footer>
 
 <script>
@@ -770,7 +771,7 @@ function trackBookClick(formato, origem){
 /* ============== DADOS ============== */
 const ORGAOS_NACIONAIS = [
   { nome: "Polícia Federal", sigla: "PF", desc: "Certidão de Antecedentes Criminais (federal)", url: "https://antecedentes.dpf.gov.br/antecedentes-criminais/certidao", verificado: true },
-  { nome: "Tribunal Superior Eleitoral", sigla: "TSE", desc: "Certidão de Quitação Eleitoral", url: "https://www.tse.jus.br/servicos-eleitorais/certidoes", verificado: true },
+  { nome: "Tribunal Superior Eleitoral", sigla: "TSE", desc: "Certidão de Quitação Eleitoral — Autoatendimento", url: "https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral#/", verificado: true },
   { nome: "Tribunal Superior do Trabalho", sigla: "TST", desc: "Certidão Negativa de Débitos Trabalhistas (CNDT)", url: "https://cndt-certidao.tst.jus.br/", verificado: true },
   { nome: "Receita Federal / PGFN", sigla: "RFB/PGFN", desc: "Certidão Conjunta de Débitos (Regularidade Fiscal Federal)", url: "https://servicos.receitafederal.gov.br/servico/certidoes/", verificado: true },
   { nome: "Superior Tribunal de Justiça", sigla: "STJ", desc: "Certidão Negativa de Distribuição Processual", url: "https://www.stj.jus.br/sites/portalp/Servicos/Certidoes", verificado: true }
@@ -795,7 +796,7 @@ const ESTADOS = {
     tj:{ url:"https://www.tjac.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-ac.jus.br/", verificado:true } },
   AL: { nome:"Alagoas", regiao:"Nordeste",
-    pc:{ url:"https://policiacientifica.al.gov.br/instituto-de-identificacao/nada-consta", verificado:true },
+    pc:{ url:"https://policiacientifica.al.gov.br/instituto-de-identificacao/nada-consta", verificado:true, orgao:"Polícia Científica", desc:"Instituto de Identificação — Certidão de Antecedentes Criminais" },
     tj:{ url:"https://www.tjal.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-al.jus.br/", verificado:true } },
   AP: { nome:"Amapá", regiao:"Norte",
@@ -803,7 +804,7 @@ const ESTADOS = {
     tj:{ url:"https://www.tjap.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-ap.jus.br/", verificado:true } },
   AM: { nome:"Amazonas", regiao:"Norte",
-    pc:{ url:"https://www.ssp.am.gov.br/", verificado:true },
+    pc:{ url:"https://www.ssp.am.gov.br/", verificado:true, orgao:"Instituto de Identificação", desc:"Instituto de Identificação Aderson C. de Melo (IIACM) — Antecedentes Criminais" },
     tj:{ url:"https://www.tjam.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-am.jus.br/", verificado:true } },
   BA: { nome:"Bahia", regiao:"Nordeste",
@@ -819,11 +820,11 @@ const ESTADOS = {
     tj:{ url:"https://www.tjdft.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-df.jus.br/", verificado:true } },
   ES: { nome:"Espírito Santo", regiao:"Sudeste",
-    pc:{ url:"https://pci.es.gov.br/antecedentes-criminais", verificado:true },
+    pc:{ url:"https://pci.es.gov.br/antecedentes-criminais", verificado:true, orgao:"Polícia Científica", desc:"Certidão de Antecedentes Criminais estadual" },
     tj:{ url:"https://www.tjes.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-es.jus.br/", verificado:true } },
   GO: { nome:"Goiás", regiao:"Centro-Oeste",
-    pc:{ url:"https://iivirtual.ssp.go.gov.br/#/ac", verificado:true },
+    pc:{ url:"https://iivirtual.ssp.go.gov.br/#/ac", verificado:true, desc:"Instituto de Identificação (Polícia Civil) — Antecedentes Criminais" },
     tj:{ url:"https://www.tjgo.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-go.jus.br/", verificado:true } },
   MA: { nome:"Maranhão", regiao:"Nordeste",
@@ -831,11 +832,11 @@ const ESTADOS = {
     tj:{ url:"https://www.tjma.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-ma.jus.br/", verificado:true } },
   MT: { nome:"Mato Grosso", regiao:"Centro-Oeste",
-    pc:{ url:"https://portal.sesp.mt.gov.br/portaldaseguranca/pages/criminal/emissaoAntecedentesCriminais.seam", verificado:true },
+    pc:{ url:"https://portal.sesp.mt.gov.br/portaldaseguranca/pages/criminal/emissaoAntecedentesCriminais.seam", verificado:true, orgao:"Politec (Perícia Oficial)", desc:"Coordenadoria Geral de Identificação — Antecedentes Criminais" },
     tj:{ url:"https://www.tjmt.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-mt.jus.br/", verificado:true } },
   MS: { nome:"Mato Grosso do Sul", regiao:"Centro-Oeste",
-    pc:{ url:"http://www.cgp.sejusp.ms.gov.br/", verificado:true },
+    pc:{ url:"http://www.cgp.sejusp.ms.gov.br/", verificado:true, orgao:"Instituto de Identificação", desc:"Instituto \"Gonçalo Pereira\" (Coordenadoria-Geral de Perícias) — Antecedentes Criminais" },
     tj:{ url:"https://www.tjms.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-ms.jus.br/", verificado:true } },
   MG: { nome:"Minas Gerais", regiao:"Sudeste",
@@ -863,11 +864,11 @@ const ESTADOS = {
     tj:{ url:"https://www.tjpi.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-pi.jus.br/", verificado:true } },
   RJ: { nome:"Rio de Janeiro", regiao:"Sudeste",
-    pc:{ url:"https://atestadodic.detran.rj.gov.br/", verificado:true },
+    pc:{ url:"https://atestadodic.detran.rj.gov.br/", verificado:true, orgao:"Instituto Félix Pacheco", desc:"Polícia Técnico-Científica (SEPOL) — Atestado de Antecedentes Criminais" },
     tj:{ url:"https://www.tjrj.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-rj.jus.br/", verificado:true } },
   RN: { nome:"Rio Grande do Norte", regiao:"Nordeste",
-    pc:{ url:"http://www8.defesasocial.rn.gov.br/antecedentes/", verificado:true },
+    pc:{ url:"http://www8.defesasocial.rn.gov.br/antecedentes/", verificado:true, orgao:"ITEP", desc:"Instituto Técnico-Científico de Polícia — Antecedentes Criminais" },
     tj:{ url:"https://www.tjrn.jus.br/", verificado:true },
     tre:{ url:"https://www.tre-rn.jus.br/", verificado:true } },
   RS: { nome:"Rio Grande do Sul", regiao:"Sul",
@@ -959,14 +960,16 @@ function selectState(uf){
 
     <div class="section-label">Esfera estadual</div>
     <div class="org-list">
-      ${orgRow("Polícia Civil", "PC-"+uf, "Certidão de Antecedentes Criminais estadual", est.pc)}
+      ${orgRow(est.pc.orgao || "Polícia Civil", "PC-"+uf, est.pc.desc || "Certidão de Antecedentes Criminais estadual", est.pc)}
       ${orgRow("Tribunal de Justiça", "TJ"+uf, "Certidões cíveis e criminais da Justiça Estadual", est.tj)}
-      ${orgRow("Tribunal Regional Eleitoral", "TRE-"+uf, "Certidão de Quitação Eleitoral / consultas locais", est.tre)}
+      ${orgRow("Tribunal Regional Eleitoral", "TRE-"+uf, "Notícias, candidatos e cartórios eleitorais do estado", est.tre)}
+      ${orgRow("Certidão de Quitação Eleitoral", "TSE", "Emissão nacional via Autoatendimento Eleitoral — mesmo sistema para todos os estados", {url: "https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral#/", verificado: true})}
     </div>
 
     <div class="section-label">Esfera federal (Justiça Federal)</div>
     <div class="org-list">
-      ${trf ? orgRow(trf.nome, trf.sigla, "Sede em " + trf.sede + " · certidões e processos federais", {url: trf.url, verificado: true}) : ""}
+      ${trf ? orgRow(trf.nome, trf.sigla, "Sede em " + trf.sede + " · site institucional, notícias e processos", {url: trf.url, verificado: true}) : ""}
+      ${orgRow("Certidão da Justiça Federal", "CJF", "Sistema Unificado — certidões cível, criminal e eleitoral de todas as regiões (TRF1 a TRF5)", {url: "https://certidao-unificada.cjf.jus.br/#/solicitacao-certidao", verificado: true})}
     </div>
 
     <div class="book-card">
