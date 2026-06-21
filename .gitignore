@@ -1,0 +1,31 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+tmp/
+
+# Backups locais
+*.bak
+*.old
+*-backup.*
+
+# Arquivos de ambiente / segredos (caso algum dia entrem credenciais de API, pixel, etc.)
+.env
+.env.local
+*.key
+
+# Pastas de dependências (caso o projeto evolua para usar build tools no futuro)
+node_modules/
+dist/
+build/
